@@ -1,7 +1,8 @@
 
+
 # 配置 A++ 6.6 数据库连接信息
-HOST = '10.11.0.36'
-PORT = '1521'
+HOST = '10.11.0.37'
+PORT = '5324'
 USERNAME = 'xzsijjcw2019'
 PASSWORD = 'xzsijjcw2021'
 DATABASE = 'xzrsjjcw'

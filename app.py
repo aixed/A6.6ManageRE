@@ -1,22 +1,15 @@
-import json
 import hashlib
-import cx_Oracle
 
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify
 from flask_cors import CORS
-from flask_httpauth import HTTPBasicAuth
 from flask_sqlalchemy import SQLAlchemy
 import database_config
 from Json_Return import *
-
 
 app = Flask(__name__)
 
 # 从文件加载数据库配置信息
 app.config.from_object(database_config)
-# 连接数据库
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'oracle://xzsijjcw2019:xzsijjcw@10.11.0.37:5324/xzrsjjcw'
-
 
 # 实例化orm框架的操作对象，后续数据库操作，都要基于操作对象来完成
 db = SQLAlchemy(app)
@@ -675,15 +668,18 @@ def 查询余额汇总表():
                 "where 单位代码='" + dw + "' and 年度='" + nd + "' and 账套代码='" + zt + "'"
             print("sql 语句: 2")
 
-        conn = cx_Oracle.connect("AIXED_20211111", "xzsijjcw", "10.1.67.12:1521/xzrszjk")
-        cursor = conn.cursor()
-        data = cursor.execute(sql)
+        #conn = cx_Oracle.connect(app.config['USERNAME'], app.config['PASSWORD'], app.config['HOST'] + ":" + app.config['PORT'] + "/" + app.config['DATABASE'])
 
-        #data = db.session.execute(sql)
+        #cursor = conn.cursor()
+        #data = cursor.execute(sql)
+        #rows = data.fetchall()
+        #cursor.execute('commit')
+        #cursor.close()
+
+        data = db.session.execute(sql)
         rows = data.fetchall()
 
-        cursor.execute('commit')
-        cursor.close()
+
 
         print("总行数:", len(rows))
 
@@ -1326,4 +1322,4 @@ if __name__ == '__main__':
     # 支持跨域访问
     CORS(app, supports_credentials=True)
 
-    app.run(host='0.0.0.0', port=5209, debug=True)
+    app.run(host='192.168.0.6', port=5209, debug=True)

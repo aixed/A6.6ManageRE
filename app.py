@@ -1,13 +1,14 @@
 import json
 import hashlib
 import cx_Oracle
-import numpy as np
+
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 from flask_httpauth import HTTPBasicAuth
 from flask_sqlalchemy import SQLAlchemy
 import database_config
 from Json_Return import *
+
 
 app = Flask(__name__)
 

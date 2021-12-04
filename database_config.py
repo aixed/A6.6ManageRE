@@ -3,7 +3,7 @@
 HOST = '10.11.0.36'
 PORT = '1521'
 USERNAME = 'xzsijjcw2019'
-PASSWORD = '**********'
+PASSWORD = 'xzsijjcw2021'
 DATABASE = 'xzrsjjcw'
 
 SQLALCHEMY_DATABASE_URI = "oracle://{username}:{password}@{host}:{port}/{db}".format(username=USERNAME,

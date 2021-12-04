@@ -31,6 +31,7 @@ pip install flask-sqlalchemy
 
 
 4运行
+
 python.exe app.py
 或
 0.启动.bat
